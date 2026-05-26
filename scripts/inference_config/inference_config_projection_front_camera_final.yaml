@@ -1,0 +1,54 @@
+seed: 42
+
+paths:
+  clip_dir: "/workspace/dataset/"
+  calibration_dir: "calibration"
+  model_path: "/root/.cache/huggingface/hub/models--nvidia--Alpamayo-1.5-10B/snapshots/f11cd25b758ab560114019b555dde2a8b92d88b4"
+  processor_path: "/root/.cache/huggingface/hub/models--Qwen--Qwen3-VL-8B-Instruct/snapshots/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b"
+  cosmos_processor_path: "/root/.cache/huggingface/hub/models--nvidia--Cosmos-Reason2-8B/snapshots/f715d875a8a99a0a2b65aa28633afd9417e46bd9"
+
+camera:
+  target_camera_filename: "Front_camera.mp4"
+  front_frame_t: -1
+
+inference:
+  device: "cuda"
+  num_history_steps: 16
+  num_future_steps: 64
+  time_step: 0.1
+  num_frames: 4
+  fps: 30.0
+  frame0_gps_time_sod: 175484.98
+  num_traj_samples: 1
+  temperature: 0.6
+  top_p: 0.98
+  max_generation_length: 256
+  image_size: [448, 800]
+  eval_xy_rotation_deg: -90.0
+
+navigation:
+  enabled: true
+  nav_text: "Turn right at the upcoming intersection"
+
+run:
+  mode: "sliding"   # "single" or "sliding"
+  single_t0_sod: 175500.23
+  sliding_t0_sod_list: []
+  sliding_step_sec: 1.0
+  max_sliding_windows: null
+
+projection:
+  force_extrinsic_mode: "inverse"   # "inverse", "forward", or null for auto
+
+output:
+  save_figures_in_sliding_mode: true
+  save_fig_dpi: 140
+  save_dir_name: "inference_result"
+  print_trajectory_tables: false
+  cot_wrap_width: 64
+  cot_max_chars: 700
+  show_plots: true
+
+bev:
+  ego_box_length: 4.5
+  ego_box_width: 2.0
