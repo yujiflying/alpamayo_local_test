@@ -27,7 +27,7 @@ inference:
   eval_xy_rotation_deg: -90.0
 
 navigation:
-  enabled: true
+  mode: "both"   # one of: "no-nav", "with-nav", "both"
   nav_text: "Turn right at the upcoming intersection"
 
 run:
